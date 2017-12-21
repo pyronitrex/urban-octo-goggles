@@ -1,0 +1,58 @@
+# To Encode press RUN and enter the following on seperate lines-
+    # Enter the letter e:
+    # Enter your message:
+    # Enter f to shift forwards or b to shift backwards:
+    # Enter how many to shift:
+
+# To Decode press RUN and enter the following on seperate lines-
+    # Enter the letter d:
+    # Enter your message:
+    
+
+def encode(text, shifter, operation='f'):
+    """take text and shift it through the alphabet a given amount in a given direction"""
+    string = ''
+    for letter in text:
+        if not letter.lower().isalpha():
+            num = letter
+        elif operation == 'f':
+            num = ord(letter.lower()) - 96 + int(shifter)
+        elif oper == 'b':
+            num = ord(letter.lower()) - 96 - int(shifter)
+        if num == letter:
+            num = num
+        elif num > 26:
+            num = num % 26
+        elif num < -25:
+            num = num % -26
+        if num == letter:
+            num = num
+        elif -25 <= num <= 0:
+            num = 26 + num
+        if num == letter:
+            string += letter
+        elif letter == letter.lower():
+                    string += chr(num + 96)
+        elif letter == letter.upper():
+                    string += chr(num + 64)
+                    
+    return string
+    
+option = input('').lower()
+
+#Encoder
+if 'e' in option:
+    message = input('')
+    oper = input('').strip().lower()
+    shift = input('').strip()
+    result = encode(message, shift, oper)
+    print('Your encoded messsage is:\n\n\n' + result)
+    
+#Decoder
+elif 'd' in option:
+    message = input('')
+    print('Message being decoded:\n\n\n' + message)
+    print('\n\nListed are all possible shifted messages:\n')
+    for nums in range(1, 26):
+        result = '\n' + encode(message, nums)
+        print(result)
